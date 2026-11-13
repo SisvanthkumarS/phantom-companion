@@ -1,0 +1,43 @@
+/* Shadow companion overlay styles — injected into all pages */
+
+#shadow-root {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  pointer-events: none;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+#shadow-root[data-awake="true"] {
+  pointer-events: auto;
+}
+
+#shadow-fallback {
+  cursor: pointer;
+  filter: drop-shadow(0 0 12px #6B2FD980);
+}
+
+#shadow-fallback:hover {
+  filter: drop-shadow(0 0 20px #A855F7);
+}
+
+/* Thinking state */
+#shadow-root[data-state="thinking"] #shadow-fallback {
+  animation: shadowThink 0.6s ease-in-out infinite alternate !important;
+}
+
+@keyframes shadowThink {
+  from { filter: drop-shadow(0 0 8px #6B2FD9); }
+  to   { filter: drop-shadow(0 0 24px #A855F7) brightness(1.2); }
+}
+
+/* Alert / distressed state */
+#shadow-root[data-emotion="distressed"] #shadow-fallback {
+  filter: drop-shadow(0 0 16px #DC2626) !important;
+}
+
+/* Excited state */
+#shadow-root[data-emotion="excited"] #shadow-fallback {
+  filter: drop-shadow(0 0 16px #7C3AED) brightness(1.15) !important;
+}

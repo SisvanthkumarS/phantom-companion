@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 240px;
+      background: #0D0D1A;
+      color: #E2D9F3;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #A855F7;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #7C6B9E;
+      margin-bottom: 20px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4C1D95;
+    }
+
+    .status-dot.active {
+      background: #A855F7;
+      box-shadow: 0 0 6px #A855F7;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #2D1458, transparent);
+      margin: 12px 0;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #4C1D95;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .hint strong {
+      color: #7C3AED;
+    }
+
+    .arise-btn {
+      width: 100%;
+      margin-top: 14px;
+      padding: 10px;
+      background: linear-gradient(135deg, #2D1458, #4C1D95);
+      border: 1px solid #6B2FD9;
+      border-radius: 6px;
+      color: #E2D9F3;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .arise-btn:hover {
+      background: linear-gradient(135deg, #4C1D95, #6B2FD9);
+      box-shadow: 0 0 12px #6B2FD940;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="16" cy="28" rx="10" ry="3" fill="#6B2FD9" opacity="0.4"/>
+      <path d="M10 24 L10 14 Q16 10 22 14 L22 24 Q16 27 10 24Z" fill="#1A0A2E" stroke="#6B2FD9" stroke-width="0.8"/>
+      <ellipse cx="16" cy="12" rx="7" ry="8" fill="#0D0D1A" stroke="#6B2FD9" stroke-width="1"/>
+      <ellipse cx="13" cy="11" rx="2" ry="1" fill="#A855F7" opacity="0.9"/>
+      <ellipse cx="19" cy="11" rx="2" ry="1" fill="#A855F7" opacity="0.9"/>
+    </svg>
+    <span class="logo-text">Shadow</span>
+  </div>
+
+  <div class="status">
+    <div class="status-dot active" id="statusDot"></div>
+    <span id="statusText">Listening for "Arise"</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="hint">
+    Say <strong>"Arise"</strong> to summon<br>
+    or press <strong>Alt + A</strong>
+  </div>
+
+  <button class="arise-btn" id="ariseBtn">⚡ Arise</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
